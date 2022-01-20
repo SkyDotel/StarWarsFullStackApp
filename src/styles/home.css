@@ -1,0 +1,15 @@
+.headers {
+    color: rgb(206, 64, 64);
+}
+
+.detailline {
+    border-top: 2px solid rgb(206, 64, 64)
+}
+
+.facts {
+    color: rgb(206, 64, 64)
+}
+
+.description {
+    font-size: 30px;
+}

@@ -15,7 +15,7 @@ export const CharacterCards = props => {
 				<p className="card-text">Gender: Random</p>
 				<p className="card-text">Hair Color: Random</p>
 				<p className="card-text">Eye Color: Random</p>
-				<button className="btn btn-outline-primary">Learn more!</button> <button className="btn btn-outline-warning float-end"><i className="far fa-heart"></i></button>
+				<button className="btn btn-outline-primary">Learn more!</button> <button className="btn btn-outline-warning float-end favorites"><i className="far fa-heart"></i></button>
 			</div>
 		</div>
 	);

@@ -14,7 +14,7 @@ export const PlanetCards = props => {
 				<p className="card-text">Climate: Random</p>
 				<p className="card-text">Gravity: Random</p>
 				<p className="card-text">Population: Random</p>
-				<button className="btn btn-outline-primary">Learn more!</button><button className="btn btn-outline-warning float-end"><i className="far fa-heart"></i></button>
+				<button className="btn btn-outline-primary">Learn more!</button><button className="btn btn-outline-warning float-end favorites"><i className="far fa-heart"></i></button>
 			</div>
 		</div>
 	);
