@@ -13,3 +13,16 @@
 .description {
     font-size: 30px;
 }
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+    margin-left: 0px;
+   }
+.list-items {
+    color: blue
+}
+.favoriteDelete {
+    color: black;
+    float: right;
+}

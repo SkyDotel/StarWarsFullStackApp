@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import React from "react";
+import React, {useState} from "react";
 
 export const CharacterCards = props => {
 
@@ -15,7 +15,7 @@ export const CharacterCards = props => {
 				<p className="card-text">Gender: Random</p>
 				<p className="card-text">Hair Color: Random</p>
 				<p className="card-text">Eye Color: Random</p>
-				<button className="btn btn-outline-primary">Learn more!</button> <button className="btn btn-outline-warning float-end favorites"><i className="far fa-heart"></i></button>
+				<button className="btn btn-outline-primary">Learn more!</button> <button className="btn btn-outline-warning float-end favorites" onClick={() => props.addFavorite()}><i className="far fa-heart"></i></button>
 			</div>
 		</div>
 	);
