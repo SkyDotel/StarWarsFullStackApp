@@ -1,16 +1,27 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			favorites: [],
+			characters:[
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					id: 1
+				}
+			],
+			planets:[
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diamter: "10465",
+					id: 2
 				}
 			]
 		},
@@ -24,19 +35,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			changeColor: (index, color) => {
+			addFavorites: (favorite) => {
 				//get the store
 				const store = getStore();
 
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				setStore({favorites : store.favorites.concat(favorite)});
+			},
+			removeFavorites: (i) => {
+				//get the store
+				const {favorites} = getStore();
+
+				//we have to loop the entire demo array to look for the respective index
+				//and change its color
+
+				//reset the global store
+				setStore({favorites : favorites.filter((f, j) => j !== i)});
 			}
 		}
 	};

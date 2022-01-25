@@ -1,9 +1,9 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = (props) => {
-	const {favorites} = props;
-	
+	const { store, actions } = useContext(Context);
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -13,19 +13,19 @@ export const Navbar = (props) => {
 				</span>
 			</Link>
 			<div className="dropdown">
-					<button className="btn btn-primary dropdown-toggle me-5" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown">Favorites <span className="badge bg-secondary">{favorites.length}</span></button>
+					<button className="btn btn-primary dropdown-toggle me-5" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown">Favorites <span className="badge bg-secondary">{store.favorites.length}</span></button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<ul id="favoritelist">
-							{favorites.map((fav, i) => {
-								if (favorites.length < 1) {
+							{store.favorites.map((f,i) => {
+								if (f.length === 0) {
 									return (
-									<li className="list-group-item-action dropdown-item" key="0">(empty)</li>
+									<li className="list-group-item-action dropdown-item" key={i}>(empty)</li>
 									)
 								} else {
 									return (
 										<li className="list-group-item-action dropdown-item list-items" key={i}>
-											{fav.name}{" "}									
-											 <span className="favoriteDelete" onClick={() => props.deleteContact(fav)}>
+											{f.name}{" "}									
+											 <span className="favoriteDelete" onClick={() => actions.removeFavorites(i)}>
 												<i className="fas fa-trash"></i></span>
 										</li>
 								)
