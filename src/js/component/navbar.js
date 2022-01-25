@@ -17,7 +17,7 @@ export const Navbar = (props) => {
 					<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<ul id="favoritelist">
 							{store.favorites.map((f,i) => {
-								if (f.length === 0) {
+								if (store.favorites.length === 0) {
 									return (
 									<li className="list-group-item-action dropdown-item" key={i}>(empty)</li>
 									)
