@@ -1,4 +1,4 @@
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, {useState, useContext} from "react";
 import { Context } from "../store/appContext";
 

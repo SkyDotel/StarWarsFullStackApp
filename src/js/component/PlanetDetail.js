@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export const Details = (props) => {
+export const PlanetDetails = (props) => {
 	return (
         <div className="container">
             <div className="row">
@@ -8,7 +9,7 @@ export const Details = (props) => {
                     <img src="https://via.placeholder.com/800x600" className="float-start"></img>
                 </div>
                 <div className="col text-center">
-                    <h1 className="mt-4">Tatooine</h1>
+                    <h1 className="mt-4">{props.name}</h1>
                     <p className="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
                 </div>
             </div>
@@ -16,28 +17,39 @@ export const Details = (props) => {
             <div className="row factsbox">
                 <div className="col facts">
                     <h5><b>Name</b></h5>
-                    <p>Tatooine</p>
+                    <p>{props.name}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Climate</b></h5>
-                    <p>arid</p>
+                    <p>{props.climate}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Population</b></h5>
-                    <p>200000</p>
+                    <p>{props.population}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Orbital Period</b></h5>
-                    <p>304</p>
+                    <p>{props.orbital_period}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Rotation Period</b></h5>
-                    <p>23</p>
+                    <p>{props.rotation_period}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Diameter</b></h5>
-                    <p>10465</p>
+                    <p>{props.diameter}</p>
                 </div>
             </div>
         </div>
-    )}
+    )
+    PlanetDetails.propTypes = {
+		id: PropTypes.number,
+		img: PropTypes.string,
+		name: PropTypes.string,
+        climate: PropTypes.string,
+        population: PropTypes.string,
+        orbital_period: PropTypes.string,
+        rotation_period: PropTypes.string,
+        diamter: PropTypes.string,
+	}
+}
