@@ -1,15 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { PlanetDetails } from "./views/PlanetDetails";
+import { CharacterDetails } from "./views/CharacterDetails";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-
+import { Context } from "./store/appContext";
 
 
 //create your first component
@@ -18,21 +18,21 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 	const [ favorites, setFavorites ] = useState([]);
-
+	const { store, actions } = useContext(Context);
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar favorites={favorites} deleteContact={(fav) => setFavorites(favorites.filter((f) => f.name != fav.name))}/>
+					<Navbar favorites={favorites}/>
 					<Switch>
 						<Route exact path="/">
-							<Home favorites={favorites} addFavorite={() => setFavorites([...favorites, {name:"Boba Fett"}])} />
+							<Home favorites={favorites} />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/CharacterDetails/:theid">
+							<CharacterDetails />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/PlanetDetails/:theid">
+							<PlanetDetails />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

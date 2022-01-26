@@ -10,6 +10,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					height: "183",
 					skin_color: "tan",
 					eye_color: "brown",
+					hair_color: "black",
+					id: 1
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
 					id: 1
 				}
 			],
@@ -20,7 +31,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					population: "120000",
 					orbital_period: "304",
 					rotation_period: "23",
-					diamter: "10465",
+					diameter: "10465",
+					id: 2
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
 					id: 2
 				}
 			]

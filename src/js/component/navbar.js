@@ -16,20 +16,16 @@ export const Navbar = (props) => {
 					<button className="btn btn-primary dropdown-toggle me-5" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown">Favorites <span className="badge bg-secondary">{store.favorites.length}</span></button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<ul id="favoritelist">
-							{store.favorites.map((f,i) => {
-								if (store.favorites.length === 0) {
-									return (
-									<li className="list-group-item-action dropdown-item" key={i}>(empty)</li>
-									)
-								} else {
-									return (
-										<li className="list-group-item-action dropdown-item list-items" key={i}>
-											{f.name}{" "}									
-											 <span className="favoriteDelete" onClick={() => actions.removeFavorites(i)}>
-												<i className="fas fa-trash"></i></span>
-										</li>
-								)
-							}})}
+								{store.favorites.length === 0 ? <li className="list-group-item-action dropdown-item">(empty)</li> :
+									store.favorites.map((f,i) => {
+											return (
+												<li className="list-group-item-action dropdown-item list-items" key={i}>
+													{f.name}{" "}									
+													<span className="favoriteDelete" onClick={() => actions.removeFavorites(i)}>
+														<i className="fas fa-trash"></i></span>
+												</li>
+											)
+							})}
 						</ul>
   					</div>
 			</div>

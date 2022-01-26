@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {useState, useContext} from "react";
 import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 
 export const CharacterCards = (props) => {
 	const { store, actions } = useContext(Context);
@@ -15,18 +16,20 @@ export const CharacterCards = (props) => {
 				<p className="card-text">Gender: {props.gender}</p>
 				<p className="card-text">Hair Color: {props.hair_color}</p>
 				<p className="card-text">Eye Color: {props.eye_color}</p>
-				<button className="btn btn-outline-primary">Learn more!</button> <button className="btn btn-outline-warning float-end favorites" onClick={() => actions.addFavorites(props.data)}><i className="far fa-heart"></i></button>
+				<Link to="/CharacterDetails/0"><button className="btn btn-outline-primary">Learn more!</button></Link>
+				 <button className="btn btn-outline-warning float-end favorites" onClick={() => actions.addFavorites(props.data)}><i className="far fa-heart"></i></button>
 			</div>
 		</div>
 	);
-	CharacterCards.propTypes = {
-		id: PropTypes.number,
-		img: PropTypes.string,
-		name: PropTypes.string,
-		gender: PropTypes.string,
-		hair_color: PropTypes.string,
-		eye_color: PropTypes.string,
-	}
+
 };
 
+CharacterCards.propTypes = {
+	id: PropTypes.number,
+	img: PropTypes.string,
+	name: PropTypes.string,
+	gender: PropTypes.string,
+	hair_color: PropTypes.string,
+	eye_color: PropTypes.string,
+}
 

@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 
 export const PlanetDetails = (props) => {
+    const { store, actions } = useContext(Context);
+    const params = useParams();
 	return (
         <div className="container">
             <div className="row">
@@ -9,7 +13,7 @@ export const PlanetDetails = (props) => {
                     <img src="https://via.placeholder.com/800x600" className="float-start"></img>
                 </div>
                 <div className="col text-center">
-                    <h1 className="mt-4">{props.name}</h1>
+                    <h1 className="mt-4">{store.planets[params.theid].name}</h1>
                     <p className="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
                 </div>
             </div>
@@ -17,39 +21,40 @@ export const PlanetDetails = (props) => {
             <div className="row factsbox">
                 <div className="col facts">
                     <h5><b>Name</b></h5>
-                    <p>{props.name}</p>
+                    <p>{store.planets[params.theid].name}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Climate</b></h5>
-                    <p>{props.climate}</p>
+                    <p>{store.planets[params.theid].climate}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Population</b></h5>
-                    <p>{props.population}</p>
+                    <p>{store.planets[params.theid].population}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Orbital Period</b></h5>
-                    <p>{props.orbital_period}</p>
+                    <p>{store.planets[params.theid].orbital_period}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Rotation Period</b></h5>
-                    <p>{props.rotation_period}</p>
+                    <p>{store.planets[params.theid].rotation_period}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Diameter</b></h5>
-                    <p>{props.diameter}</p>
+                    <p>{store.planets[params.theid].diameter}</p>
                 </div>
             </div>
         </div>
     )
-    PlanetDetails.propTypes = {
-		id: PropTypes.number,
-		img: PropTypes.string,
-		name: PropTypes.string,
-        climate: PropTypes.string,
-        population: PropTypes.string,
-        orbital_period: PropTypes.string,
-        rotation_period: PropTypes.string,
-        diamter: PropTypes.string,
-	}
+}
+
+PlanetDetails.propTypes = {
+    id: PropTypes.number,
+    img: PropTypes.string,
+    name: PropTypes.string,
+    climate: PropTypes.string,
+    population: PropTypes.string,
+    orbital_period: PropTypes.string,
+    rotation_period: PropTypes.string,
+    diamter: PropTypes.string,
 }

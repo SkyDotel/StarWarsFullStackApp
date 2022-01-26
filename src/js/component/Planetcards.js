@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import React, {useState, useContext} from "react";
 import { Context } from "../store/appContext";
 
+import { Link, useParams } from "react-router-dom";
+
+
 
 export const PlanetCards = (props) => {
 	const { store, actions } = useContext(Context);
@@ -15,11 +18,14 @@ export const PlanetCards = (props) => {
 				<h5 className="card-title text-center px-3 py-0">{props.name}</h5>
 				<p className="card-text">Climate: {props.climate}</p>
 				<p className="card-text">Population: {props.population}</p>
-				<button className="btn btn-outline-primary">Learn more!</button><button className="btn btn-outline-warning float-end favorites" onClick={() => actions.addFavorites(props.data)}><i className="far fa-heart"></i></button>
+				<Link to="/PlanetDetails/1"><button className="btn btn-outline-primary">Learn more!</button></Link> 
+				<button className="btn btn-outline-warning float-end favorites" onClick={() => actions.addFavorites(props.data)}><i className="far fa-heart"></i></button>
 			</div>
 		</div>
 	);
 
+
+};
 	PlanetCards.propTypes = {
 		id: PropTypes.number,
 		img: PropTypes.string,
@@ -28,5 +34,3 @@ export const PlanetCards = (props) => {
 		terrain: PropTypes.string,
 		climate: PropTypes.string
 	}
-};
-

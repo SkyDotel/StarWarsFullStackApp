@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 
-export const Details = (props) => {
+export const CharacterDetails = (props) => {
+    const { store, actions } = useContext(Context);
+    const params = useParams();
 	return (
         <div className="container">
             <div className="row">
@@ -9,7 +13,7 @@ export const Details = (props) => {
                     <img src="https://via.placeholder.com/800x600" className="float-start"></img>
                 </div>
                 <div className="col text-center">
-                    <h1 className="mt-4">{props.name}</h1>
+                    <h1 className="mt-4">{store.characters[params.theid].name}</h1>
                     <p className="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
                 </div>
             </div>
@@ -17,40 +21,40 @@ export const Details = (props) => {
             <div className="row factsbox">
                 <div className="col facts">
                     <h5><b>Name</b></h5>
-                    <p>{props.name}</p>
+                    <p>{store.characters[params.theid].name}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Birth Year</b></h5>
-                    <p>{props.birth_year}</p>
+                    <p>{store.characters[params.theid].birth_year}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Gender</b></h5>
-                    <p>{props.gender}</p>
+                    <p>{store.characters[params.theid].gender}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Height (cm)</b></h5>
-                    <p>{props.height}</p>
+                    <p>{store.characters[params.theid].height}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Skin Color</b></h5>
-                    <p>{props.skin_color}</p>
+                    <p>{store.characters[params.theid].skin_color}</p>
                 </div>
                 <div className="col facts">
                     <h5><b>Eye Color</b></h5>
-                    <p>{props.eye_color}</p>
+                    <p>{store.characters[params.theid].eye_color}</p>
                 </div>
             </div>
         </div>
     )
-    Details.propTypes = {
-		id: PropTypes.number,
-		img: PropTypes.string,
-		name: PropTypes.string,
-        birth_year: PropTypes.string,
-        height: PropTypes.string,
-        skin_color: PropTypes.string,
-		gender: PropTypes.string,
-		hair_color: PropTypes.string,
-		eye_color: PropTypes.string,
-	}
 };
+CharacterDetails.propTypes = {
+    id: PropTypes.number,
+    img: PropTypes.string,
+    name: PropTypes.string,
+    birth_year: PropTypes.string,
+    height: PropTypes.string,
+    skin_color: PropTypes.string,
+    gender: PropTypes.string,
+    hair_color: PropTypes.string,
+    eye_color: PropTypes.string,
+}
