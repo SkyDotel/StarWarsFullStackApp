@@ -201,11 +201,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			addFavorites: (favorite, i) => { 
+			addFavorites: (favorite) => { 
 				const store = getStore();
 				if (favorite.isFavorite === true) {
 					favorite.isFavorite = false;
-					getActions().removeFavorites(i)
+					setStore({favorites : store.favorites.filter(favoriteItem => favoriteItem.name !== favorite.name)})
 				} else {
 					favorite.isFavorite = true;
 					setStore({favorites : store.favorites.concat(favorite)});
