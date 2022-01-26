@@ -1,0 +1,1 @@
+How to change icon on card to solid with conditional, or how to pass a change of object variable into store from the favorite Delete.

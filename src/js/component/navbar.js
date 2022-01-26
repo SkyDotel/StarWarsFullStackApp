@@ -17,11 +17,13 @@ export const Navbar = (props) => {
 					<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<ul id="favoritelist">
 								{store.favorites.length === 0 ? <li className="list-group-item-action dropdown-item">(empty)</li> :
-									store.favorites.map((f,i) => {
+									store.favorites.map((f, i) => {
 											return (
 												<li className="list-group-item-action dropdown-item list-items" key={i}>
-													{f.name}{" "}									
-													<span className="favoriteDelete" onClick={() => actions.removeFavorites(i)}>
+													<Link to={f.detail + f.uid}>
+													{f.name}
+													</Link>{" "}									
+													<span className="favoriteDelete" onClick={() => actions.removeFavorites(fav, i)}>
 														<i className="fas fa-trash"></i></span>
 												</li>
 											)

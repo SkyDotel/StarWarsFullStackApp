@@ -11,7 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					skin_color: "tan",
 					eye_color: "brown",
 					hair_color: "black",
-					id: 1
+					uid: 1,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
 				},
 				{
 					name: "Boba Fett",
@@ -21,7 +23,81 @@ const getState = ({ getStore, getActions, setStore }) => {
 					skin_color: "tan",
 					eye_color: "brown",
 					hair_color: "black",
-					id: 1
+					uid: 2,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
+					uid: 3,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
+					uid: 4,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
+					uid: 5,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
+					uid: 6,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
+					uid: 7,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Boba Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
+					uid: 8,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
 				}
 			],
 			planets:[
@@ -32,7 +108,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					orbital_period: "304",
 					rotation_period: "23",
 					diameter: "10465",
-					id: 2
+					uid: 1,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
 				},
 				{
 					name: "Tatooine",
@@ -41,7 +119,75 @@ const getState = ({ getStore, getActions, setStore }) => {
 					orbital_period: "304",
 					rotation_period: "23",
 					diameter: "10465",
-					id: 2
+					uid: 2,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
+					uid: 3,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
+					uid: 4,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
+					uid: 5,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
+					uid: 6,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
+					uid: 7,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
+					uid: 8,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
 				}
 			]
 		},
@@ -51,30 +197,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				/**
+				/*
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
 			addFavorites: (favorite) => {
-				//get the store
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-
-				//reset the global store
+				favorite.isFavorite = true;
+				console.log(favorite.isFavorite)
 				setStore({favorites : store.favorites.concat(favorite)});
 			},
-			removeFavorites: (i) => {
-				//get the store
+			removeFavorites: (fav, i) => {
 				const {favorites} = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-
-				//reset the global store
 				setStore({favorites : favorites.filter((f, j) => j !== i)});
-			}
+			},
+		// 	toggleOff: (favOn) => {
+		// 		const {favorites} = getStore();
+				
+		// 	}
 		}
 	};
 };
