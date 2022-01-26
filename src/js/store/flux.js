@@ -11,6 +11,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					skin_color: "tan",
 					eye_color: "brown",
 					hair_color: "black",
+					uid: 0,
+					detail: "/CharacterDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Jango Fett",
+					birth_year: "32 BBY",
+					gender: "male",
+					height: "183",
+					skin_color: "tan",
+					eye_color: "brown",
+					hair_color: "black",
 					uid: 1,
 					detail: "/CharacterDetails/",
 					isFavorite: false,
@@ -84,18 +96,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					eye_color: "brown",
 					hair_color: "black",
 					uid: 7,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 8,
 					detail: "/CharacterDetails/",
 					isFavorite: false,
 				}
@@ -108,6 +108,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					orbital_period: "304",
 					rotation_period: "23",
 					diameter: "10465",
+					uid: 0,
+					detail: "/PlanetDetails/",
+					isFavorite: false,
+				},
+				{
+					name: "Tatooine",
+					climate: "arid",
+					population: "120000",
+					orbital_period: "304",
+					rotation_period: "23",
+					diameter: "10465",
 					uid: 1,
 					detail: "/PlanetDetails/",
 					isFavorite: false,
@@ -175,17 +186,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					rotation_period: "23",
 					diameter: "10465",
 					uid: 7,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 8,
 					detail: "/PlanetDetails/",
 					isFavorite: false,
 				}
@@ -205,7 +205,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				if (favorite.isFavorite === true) {
 					favorite.isFavorite = false;
-					setStore({favorites : store.favorites.filter(favoriteItem => favoriteItem.name !== favorite.name)})
+					setStore({favorites : store.favorites.filter(favoriteItem => favoriteItem.uid + favoriteItem.name !== favorite.uid + favorite.name)})
 				} else {
 					favorite.isFavorite = true;
 					setStore({favorites : store.favorites.concat(favorite)});

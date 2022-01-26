@@ -13,7 +13,7 @@ export const CharacterDetails = (props) => {
                     <img src="https://via.placeholder.com/800x600" className="float-start"></img>
                 </div>
                 <div className="col text-center">
-                    <h1 className="mt-4">{store.characters[params.theuid]?.name}</h1>
+                    <h1 className="mt-4">{store.characters[params.theuid].name}</h1>
                     <p className="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
                 </div>
             </div>
