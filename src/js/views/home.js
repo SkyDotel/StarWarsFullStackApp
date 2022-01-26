@@ -14,7 +14,7 @@ export const Home = (props) => {
 			</div>
 			<h1 className="mx-0 px-4 pb-2 pt-4 headers">Planets</h1>
 			<div className="d-flex flex-row mx-auto mb-4" style={{ width: "90%", overflow: "auto" }}>
-				{store.planets.map((c, i) => <PlanetCards data = {c} uid={store.planets[i].uid} name={store.planets[i].name} climate={store.planets[i].climate} population={store.planets[i].population} img="https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_%28fictional_desert_planet%29.jpg" key={i}/>)}				
+				{store.planets.map((c, i) => <PlanetCards data = {c} uid={store.planets[i].uid} favStatus={store.planets[i].isFavorite} name={store.planets[i].name} climate={store.planets[i].climate} population={store.planets[i].population} img="https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_%28fictional_desert_planet%29.jpg" key={i}/>)}				
 			</div>
 		</div>
 	);

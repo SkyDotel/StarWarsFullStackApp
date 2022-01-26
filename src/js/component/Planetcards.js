@@ -18,7 +18,7 @@ export const PlanetCards = (props) => {
 				<p className="card-text">Climate: {props.climate}</p>
 				<p className="card-text">Population: {props.population}</p>
 				<Link to={`/PlanetDetails/${props.uid}`}><button className="btn btn-outline-primary">Learn more!</button></Link> 
-				<button className="btn btn-outline-warning float-end favorites" onClick={() => actions.addFavorites(props.data)}><i className="far fa-heart"></i></button>
+				<button className="btn btn-outline-warning float-end favorites" onClick={() => actions.addFavorites(props.data)}>{props.favStatus === true ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}</button>
 			</div>
 		</div>
 	);

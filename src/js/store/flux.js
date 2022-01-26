@@ -201,20 +201,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			addFavorites: (favorite) => {
+			addFavorites: (favorite, i) => { 
 				const store = getStore();
-				favorite.isFavorite = true;
-				console.log(favorite.isFavorite)
-				setStore({favorites : store.favorites.concat(favorite)});
+				if (favorite.isFavorite === true) {
+					favorite.isFavorite = false;
+					getActions().removeFavorites(i)
+				} else {
+					favorite.isFavorite = true;
+					setStore({favorites : store.favorites.concat(favorite)});
+				}
 			},
-			removeFavorites: (fav, i) => {
+			removeFavorites: (i) => {
 				const {favorites} = getStore();
-				setStore({favorites : favorites.filter((f, j) => j !== i)});
+				let newFavorites = favorites.map((item, index) => {
+					if (index === i) {
+						item["isFavorite"] = false;
+						return item
+					} else {
+						return item; 
+					}	
+				})
+				setStore({favorites : newFavorites.filter((f, indexToDelete) => indexToDelete !== i)});
 			},
-		// 	toggleOff: (favOn) => {
-		// 		const {favorites} = getStore();
-				
-		// 	}
+
 		}
 	};
 };
