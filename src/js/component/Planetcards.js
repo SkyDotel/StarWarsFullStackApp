@@ -10,7 +10,7 @@ export const PlanetCards = (props) => {
 	return (
 		<div className="card p-0 me-3 mb-4" style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "22rem" }}>
 			<img
-				src={props.img}
+				src={store.images[props.details + props.uid] || "https://via.placeholder.com/400x200"}
 				className="card-img-top"
 			/>
 			<div className="card-body p-3">
@@ -31,5 +31,6 @@ export const PlanetCards = (props) => {
 		name: PropTypes.string,
 		population: PropTypes.string,
 		terrain: PropTypes.string,
-		climate: PropTypes.string
+		climate: PropTypes.string,
+		details: PropTypes.string
 	}

@@ -2,194 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			favorites: [],
-			characters:[
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 0,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Jango Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 1,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 2,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 3,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 4,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 5,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 6,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Boba Fett",
-					birth_year: "32 BBY",
-					gender: "male",
-					height: "183",
-					skin_color: "tan",
-					eye_color: "brown",
-					hair_color: "black",
-					uid: 7,
-					detail: "/CharacterDetails/",
-					isFavorite: false,
-				}
-			],
-			planets:[
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 0,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 1,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 2,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 3,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 4,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 5,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 6,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				},
-				{
-					name: "Tatooine",
-					climate: "arid",
-					population: "120000",
-					orbital_period: "304",
-					rotation_period: "23",
-					diameter: "10465",
-					uid: 7,
-					detail: "/PlanetDetails/",
-					isFavorite: false,
-				}
-			]
+			characters:[],
+			planets:[],
+			images: {
+				"/PlanetsDetails/0" : "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_%28fictional_desert_planet%29.jpg",
+				"/CharacterDetails/0": "https://mcdn.wallpapersafari.com/medium/23/16/wYTO9j.jpg"
+			},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -223,7 +41,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				setStore({favorites : newFavorites.filter((f, indexToDelete) => indexToDelete !== i)});
 			},
-
+			loadCharacters: async () => {
+				const response = await fetch('https://swapi.dev/api/people');
+				if (response.status === 200) {
+					const payload = await response.json();
+					const myNewCharacters = payload.results.map((people, i) => {
+						people["details"] = "/CharacterDetails/",
+						people["isFavorite"] = false;
+						people["uid"] = i
+						return people;
+					})
+					setStore({characters: myNewCharacters});
+					console.log (payload.results);
+				}
+			},
+			loadPlanets: async () => {
+				const response = await fetch('https://swapi.dev/api/planets');
+				if (response.status === 200) {
+					const payload = await response.json();
+					const myNewPlanets = payload.results.map((planets, i) => {
+						planets.details = "/PlanetsDetails/",
+						planets.isFavorite = false;
+						planets.uid = i
+						return planets;
+					})
+					setStore({planets: myNewPlanets});
+					console.log (myNewPlanets);
+				}
+			},
 		}
 	};
 };
