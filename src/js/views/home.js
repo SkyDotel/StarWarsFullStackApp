@@ -41,7 +41,7 @@ export const Home = (props) => {
             name={store.planets[i].name}
             climate={store.planets[i].climate}
             population={store.planets[i].population}
-			details={store.planets[i].details}
+			      details={store.planets[i].details}
             key={i}
           />
         ))}

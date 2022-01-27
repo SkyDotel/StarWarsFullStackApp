@@ -11,8 +11,9 @@ export const PlanetDetails = (props) => {
       <div className="row">
         <div className="col">
           <img
-            src={store.images["/PlanetsDetails/" + params.theuid] || "https://via.placeholder.com/800x600"}
+            src={store.images["/PlanetDetails/" + params.theuid] || "https://via.placeholder.com/800x600"}
             className="float-start"
+            height="600" width="800"
           ></img>
         </div>
         <div className="col text-center">

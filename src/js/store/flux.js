@@ -5,8 +5,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters:[],
 			planets:[],
 			images: {
-				"/PlanetsDetails/0" : "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_%28fictional_desert_planet%29.jpg",
-				"/CharacterDetails/0": "https://mcdn.wallpapersafari.com/medium/23/16/wYTO9j.jpg"
+				"/CharacterDetails/0": "https://cdn.vox-cdn.com/thumbor/CbgKIPPzOnjph22XYg7SJK7jxLo=/0x0:2935x1544/920x613/filters:focal(1364x397:1832x865):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/68550262/luke_jabbas_palace.0.jpg",
+				"/CharacterDetails/1": "https://images.immediate.co.uk/production/volatile/sites/3/2019/10/EP9-FF-001686-336e75b.jpg",
+				"/PlanetDetails/0" : "https://media.moddb.com/cache/images/mods/1/17/16326/thumb_620x2000/tatoine.png",
+				"/PlanetDetails/1" : "https://2w6kxc22rrr9mabqt1mglgait6-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/alderaan-planet-explosion-small.jpg"
+				
 			},
 		},
 		actions: {
@@ -60,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.status === 200) {
 					const payload = await response.json();
 					const myNewPlanets = payload.results.map((planets, i) => {
-						planets.details = "/PlanetsDetails/",
+						planets.details = "/PlanetDetails/",
 						planets.isFavorite = false;
 						planets.uid = i
 						return planets;
